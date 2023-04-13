@@ -1,8 +1,10 @@
 package studio9;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import support.cse131.NotYetImplementedException;
 
@@ -28,9 +30,23 @@ public class WordCount {
 	 *         associated with the number of occurrences of the word
 	 */
 	public static Map<String, Integer> countWords(List<String> words) {
+		Map<String, Integer> frequency = new HashMap<>();
+		Set<String> word = new HashSet<String>();
+		word.addAll(words);
 
-		// FIXME
-		throw new NotYetImplementedException();
+		for (int i = 0; i < words.size(); i++) {
+			if (frequency.get(words.get(i)) == null) {
+				frequency.put(words.get(i), 1);
+			}
+			else {
+				int temp = frequency.get(words.get(i));
+				temp++;
+				frequency.put(words.get(i), temp);
+			}
+		}
+		
+		return frequency;
+		
 
 	}
 }
